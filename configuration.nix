@@ -73,6 +73,7 @@
     pulse.enable = true;
 		alsa.enable = true;
 		alsa.support32Bit = true;
+		wireplumber.enable = true;
   };
 
 	hardware.bluetooth.enable = true;
