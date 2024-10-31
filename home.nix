@@ -42,6 +42,8 @@
 		qbittorrent
 		air
 		kdePackages.gwenview
+		starship
+		gogetdoc
   ]) ++ ([
    (pkgs.nerdfonts.override {
       fonts = [
@@ -53,6 +55,7 @@
     })
   ]);
 
+	programs.starship.enable = true;
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -60,16 +63,16 @@
     syntaxHighlighting.enable = true;
     
     plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = ./h-modules/p10k; 
-        file = "p10k.zsh";
-      }
-      {
-        name = "zsh-powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-        file = "powerlevel10k.zsh-theme";
-      }
+     #{
+     #  name = "powerlevel10k-config";
+     #  src = ./h-modules/p10k; 
+     #  file = "p10k.zsh";
+     #}
+     #{
+     #  name = "zsh-powerlevel10k";
+     #  src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+     #  file = "powerlevel10k.zsh-theme";
+     #}
       
     ];
 

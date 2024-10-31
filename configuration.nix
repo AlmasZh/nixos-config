@@ -10,6 +10,7 @@
       ./modules/database.nix
       ./modules/xserver.nix
 			./modules/wm.nix
+			./modules/virtualization.nix
     ];
 
   boot.loader = {
@@ -140,10 +141,13 @@
     gzip
     zip
     go
+    go-task
+		gotools
+		eza
+
     python312Packages.pip
     python312
     superfile
-    go-task
     cups
 
     ffmpeg
