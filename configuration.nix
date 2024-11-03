@@ -4,13 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/nvidia.nix
-      ./modules/sddm.nix
-      ./modules/docker.nix
-      ./modules/database.nix
-      ./modules/xserver.nix
-			./modules/wm.nix
-			./modules/virtualization.nix
+			./modules/list.nix
     ];
 
   boot.loader = {
@@ -104,7 +98,7 @@
   users.users.almas = {
     shell = pkgs.zsh; 
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" ];
     packages = with pkgs; [ firefox ];
   };
 
@@ -144,6 +138,8 @@
     go-task
 		gotools
 		eza
+		grafana
+		grafana-loki
 
     python312Packages.pip
     python312

@@ -34,6 +34,8 @@
     dolphin
     vscode
     nodejs_22
+		slurp
+		grim
     neofetch
     spotify
     postman
@@ -42,8 +44,15 @@
 		qbittorrent
 		air
 		kdePackages.gwenview
+		kdePackages.kimageformats
+		libraw
 		starship
 		gogetdoc
+		libvirt
+		virt-manager
+		qemu
+		obsidian
+
   ]) ++ ([
    (pkgs.nerdfonts.override {
       fonts = [
@@ -78,6 +87,7 @@
 
     shellAliases = {
       c = "clear";
+			l = "eza -la --icons --group-directories-first";
       ".." = "cd ..";
       "..." = "cd ../../";
     };

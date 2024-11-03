@@ -94,6 +94,10 @@
 					"$mod SHIFT, up,    swapwindow, u"
 					"$mod SHIFT, down,  swapwindow, d"
 
+					# Screenshot
+					", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png" #| dunstify 'Screenshot of the region taken' -t 1000
+					"SHIFT, Print, exec, grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png" #| dunstify 'Screenshot of whole screen taken' -t 1000 # screenshot of the whole screen
+
 					# Scratchpad
 					"$mod, U, togglespecialworkspace, first"
 					"$mod, I, togglespecialworkspace, second"
