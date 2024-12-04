@@ -44,6 +44,11 @@
 
 			monitor=",preferred,auto,1";
 
+			device = {
+				name = "asup1205:00-093a:2008-touchpad";
+				enabled = false;
+			};
+
 			decoration = {
 				rounding = 7;  
 			
@@ -67,6 +72,7 @@
 			};
 			windowrulev2 = [
 				"opacity 0.80 0.80,class:^(kitty|code)"
+				#"opacity 0.90 0.90,class:^(obsidian)"
 			];
 			bind =
 				[
@@ -77,8 +83,8 @@
 					"$mod, E, exec, $fileManager"
 					"$mod, V, togglefloating,"
 					"$mod, D, exec, $menu"
-					"$mod, P, pseudo,"
-					"$mod, J, togglesplit,"
+					"$mod, Y, pseudo,"
+					"$mod, J, togglesplit"
 					"$mod, C, exec, code"
 					"$mod, RETURN, fullscreen"
 
@@ -102,9 +108,11 @@
 					"$mod, U, togglespecialworkspace, first"
 					"$mod, I, togglespecialworkspace, second"
 					"$mod, O, togglespecialworkspace, third"
+					"$mod, P, togglespecialworkspace, fourth"
 					"$mod SHIFT, U, movetoworkspace, special:first"
 					"$mod SHIFT, I, movetoworkspace, special:second"
 					"$mod SHIFT, O, movetoworkspace, special:third"
+					"$mod SHIFT, P, movetoworkspace, special:fourth"
 
 					# Sound
 					", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"

@@ -11,7 +11,8 @@
 		let 
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
-			pkgs = nixpkgs.legacyPackages.${system};
+			pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+			#pkgs = import nixpkgs { system; config.allowUnfree = true; };
 		in {
 		
 		nixosConfigurations = {

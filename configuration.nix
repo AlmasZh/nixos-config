@@ -71,8 +71,12 @@
 		wireplumber.enable = true;
   };
 
-	hardware.bluetooth.enable = true;
+	#hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+	hardware.bluetooth = {
+		enable = true;
+		powerOnBoot = true;
+	};
 
   services.flatpak.enable = true;
   services.upower.enable = true;
@@ -138,6 +142,8 @@
     go-task
 		gotools
 		eza
+		rclone
+		gnome.gnome-keyring
 		grafana
 		grafana-loki
 
@@ -149,6 +155,7 @@
     ffmpeg
     jellyfin
     jellyfin-web
+		obsidian
 
     devbox
 

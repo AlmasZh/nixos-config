@@ -13,6 +13,4 @@
       host all all ::1/128      trust
     '';
   };
-
-
 }
