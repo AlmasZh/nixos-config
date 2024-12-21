@@ -2,11 +2,8 @@
 
 {
   imports = [
-    ./h-modules/hyprland/hyprland.nix
-    ./h-modules/hyprland/hyprpaper.nix
-		./h-modules/programs/waybar.nix
-    ./h-modules/themes/wm-themes.nix    
-  ];
+    ./h-modules/list.nix
+	];
   home.username = "almas";
   home.homeDirectory = "/home/almas";
   home.stateVersion = "24.05";
@@ -24,6 +21,7 @@
 
   home.packages = ( with pkgs; [
     telegram-desktop
+		google-chrome
     libreoffice
     vlc
     mpv

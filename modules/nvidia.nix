@@ -9,7 +9,6 @@
   services.power-profiles-daemon.enable = true;
   hardware.opengl = {
     enable = true;
-    driSupport = true;
   };
   
   services.xserver.videoDrivers = ["nvidia"];

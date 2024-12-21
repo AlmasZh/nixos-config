@@ -5,7 +5,6 @@
     enable = true;
     wayland.enable = true;
 		enableHidpi = true;
-    theme = "chili";
 		package = pkgs.sddm;
   };
 

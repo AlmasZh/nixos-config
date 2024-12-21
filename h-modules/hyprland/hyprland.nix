@@ -55,10 +55,10 @@
 				active_opacity = 1.0;  
 				inactive_opacity = 1.0;  
 			
-				drop_shadow = true;  
-				shadow_range = 4;  
-				shadow_render_power = 3;  
-				"col.shadow" = "rgba(7300ffee)";  
+				#drop_shadow = true;  
+				#shadow_range = 4;  
+				#shadow_render_power = 3;  
+				#"col.shadow" = "rgba(7300ffee)";  
 				#col.shadow = rgba(1a1a1aee)  
 			
 				# https://wiki.hyprland.org/Configuring/Variables/#blur  
@@ -109,10 +109,14 @@
 					"$mod, I, togglespecialworkspace, second"
 					"$mod, O, togglespecialworkspace, third"
 					"$mod, P, togglespecialworkspace, fourth"
+					"$mod, K, togglespecialworkspace, fifth"
+					"$mod, L, togglespecialworkspace, sixth"
 					"$mod SHIFT, U, movetoworkspace, special:first"
 					"$mod SHIFT, I, movetoworkspace, special:second"
 					"$mod SHIFT, O, movetoworkspace, special:third"
 					"$mod SHIFT, P, movetoworkspace, special:fourth"
+					"$mod SHIFT, K, movetoworkspace, special:fifth"
+					"$mod SHIFT, L, movetoworkspace, special:sixth"
 
 					# Sound
 					", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"

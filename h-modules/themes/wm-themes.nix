@@ -2,10 +2,10 @@
 { lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    (catppuccin-kvantum.override {
-      accent = "Blue";
-      variant = "Mocha";
-    })
+    #(catppuccin-kvantum.override {
+    #  accent = "Blue";
+    #  variant = "Mocha";
+    #})
     papirus-folders
   ];
 

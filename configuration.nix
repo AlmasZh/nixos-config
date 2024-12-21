@@ -130,6 +130,7 @@
     tree
     curl
     git
+		gh
     kitty
     wget
     lshw
@@ -144,10 +145,12 @@
 		eza
 		rclone
 		gnome.gnome-keyring
+		jetbrains.pycharm-professional
 		grafana
 		grafana-loki
 
     python312Packages.pip
+		python312Packages.psycopg2
     python312
     superfile
     cups
