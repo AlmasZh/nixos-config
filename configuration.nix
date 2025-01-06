@@ -148,6 +148,7 @@
 		jetbrains.pycharm-professional
 		grafana
 		grafana-loki
+		gitkraken
 
     python312Packages.pip
 		python312Packages.psycopg2
