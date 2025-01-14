@@ -25,8 +25,8 @@
     libreoffice
     vlc
     mpv
+		okular
     tt
-    zsh-powerlevel10k
     meslo-lgs-nf
     noto-fonts
     dolphin
@@ -51,7 +51,6 @@
 		qemu
 		obsidian
 		awscli2
-
   ]) ++ ([
    (pkgs.nerdfonts.override {
       fonts = [

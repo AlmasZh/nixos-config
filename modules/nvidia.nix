@@ -7,7 +7,7 @@
   };
   
   services.power-profiles-daemon.enable = true;
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
   

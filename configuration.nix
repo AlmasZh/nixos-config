@@ -144,7 +144,7 @@
 		gotools
 		eza
 		rclone
-		gnome.gnome-keyring
+		gnome-keyring
 		jetbrains.pycharm-professional
 		grafana
 		grafana-loki

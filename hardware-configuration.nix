@@ -29,7 +29,7 @@
     ];
 
 	fileSystems."/mnt/Main" = 
-		{	device = "/dev/disk/by-uuid/c0a953ed-1e3e-4f12-9d4d-1ef844f3c0e4";
+		{	device = "/dev/disk/by-uuid/194a51ff-146d-4779-a7f2-89d6e09a281d";
 			fsType = "ext4";
 			# del
 			options = [ "nofail" ];
