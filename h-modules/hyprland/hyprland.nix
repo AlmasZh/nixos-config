@@ -17,6 +17,7 @@
 			"$terminal" = "kitty"; 
 			"$fileManager" = "dolphin";
 			"$menu" = "rofi -show drun";
+			"$hyprlock" = "hyprlock --immediate";
 			"$browser" = "firefox";
 
 			env = [ 
@@ -78,6 +79,7 @@
 				[
 					"$mod, R, exec, $terminal"
 					"$mod, F, exec, $browser"
+					"$mod, G, exec, $hyprlock"
 					"$mod, Q, killactive,"
 					"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"

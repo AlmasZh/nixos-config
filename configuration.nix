@@ -162,11 +162,17 @@
 		obsidian
 
     devbox
+		kubectl
+		kubernetes
+		minikube
+		k9s
 
     gawk
     procps
 
     tmux
+		gparted
+		acpi
     go-migrate
     wl-clipboard
     rofi-wayland

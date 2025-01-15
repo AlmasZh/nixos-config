@@ -8,5 +8,6 @@
 		./wm.nix
 		./virtualization.nix
 		./testing_tools.nix
+	#	./kubernetes.nix
 	];
 }
