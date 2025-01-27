@@ -44,7 +44,9 @@
 			};
 
 			monitor=",preferred,auto,1";
-
+			misc = {
+				force_default_wallpaper = 0;
+			};
 			device = {
 				name = "asup1205:00-093a:2008-touchpad";
 				enabled = false;
@@ -81,7 +83,7 @@
 					"$mod, F, exec, $browser"
 					"$mod, G, exec, $hyprlock"
 					"$mod, Q, killactive,"
-					"$mod, M, exit,"
+			#	"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"
 					"$mod, V, togglefloating,"
 					"$mod, D, exec, $menu"

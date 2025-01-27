@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
-
-{
+let
+	goroot = "${pkgs.go}/share/go";
+in {
   imports =
     [
       ./hardware-configuration.nix
@@ -102,7 +103,7 @@
   users.users.almas = {
     shell = pkgs.zsh; 
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" ];
     packages = with pkgs; [ firefox ];
   };
 
@@ -131,7 +132,6 @@
     curl
     git
 		gh
-    kitty
     wget
     lshw
     btop
@@ -139,23 +139,21 @@
     unzip
     gzip
     zip
+ 		eza
+		gnome-keyring
+    cups
+		
+    python311Packages.pip
+    python311
+		pipx
+		gcc
+		gcc.libc
     go
     go-task
 		gotools
-		eza
-		rclone
-		gnome-keyring
-		jetbrains.pycharm-professional
-		grafana
-		grafana-loki
-		gitkraken
+    go-migrate
 
-    python312Packages.pip
-		python312Packages.psycopg2
-    python312
-    superfile
-    cups
-
+		fabric-ai
     ffmpeg
     jellyfin
     jellyfin-web
@@ -166,14 +164,20 @@
 		kubernetes
 		minikube
 		k9s
+		grafana
+		grafana-loki
+		gitkraken
+		ansible
 
     gawk
     procps
-
     tmux
+		superfile
+		jetbrains.pycharm-professional
+    kitty
 		gparted
 		acpi
-    go-migrate
+
     wl-clipboard
     rofi-wayland
     hyprpaper
@@ -212,6 +216,8 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     MOZ_ENABLE_WAYLAND = "1";
 		JAVA_HOME = "/nix/var/nix/profiles/default/bin/java";
+		GOROOT = goroot;
+		GOPATH = "/home/almas/go";
 
     #WAYLAND_DISPLAY="wayland-1";
     #XDG_RUNTIME_DIR="/run/user/1000";

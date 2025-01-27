@@ -5,14 +5,14 @@
 		enable = true;
 		package = pkgs.hyprpaper;
 		settings = {
-			ipc = "on";
+			ipc = "off";
 			splash = "false";
-			splash_offset = 2.0;
+			#splash_offset = 2.0;
 
 			preload = 
-				[ "/share/wallpapers/backiee-283486-landscape.jpg" ];
+				[ "/share/wallpapers/nixos-wallpaper-catppuccin-mocha.png" ];
 			wallpaper = 
-				[ ",/share/wallpapers/backiee-283486-landscape.jpg" ];
+				[ ",/share/wallpapers/nixos-wallpaper-catppuccin-mocha.png" ];
 		};
 	};
 }
