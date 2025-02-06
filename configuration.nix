@@ -136,6 +136,7 @@ in {
     lshw
     btop
     htop
+		fish
     unzip
     gzip
     zip
