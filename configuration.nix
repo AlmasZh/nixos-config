@@ -143,16 +143,23 @@ in {
  		eza
 		gnome-keyring
     cups
+		openssl
 		
-    python311Packages.pip
-    python311
+    python312Packages.pip
+    python312
 		pipx
 		gcc
+		glibc
 		gcc.libc
+		glibc.dev
+		libgcc
+		zlib
+		libjpeg
     go
     go-task
 		gotools
     go-migrate
+		nodejs_23
 
 		fabric-ai
     ffmpeg
@@ -217,8 +224,8 @@ in {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     MOZ_ENABLE_WAYLAND = "1";
 		JAVA_HOME = "/nix/var/nix/profiles/default/bin/java";
-		GOROOT = goroot;
-		GOPATH = "/home/almas/go";
+		#GOROOT = goroot;
+		#GOPATH = "/home/almas/go";
 
     #WAYLAND_DISPLAY="wayland-1";
     #XDG_RUNTIME_DIR="/run/user/1000";

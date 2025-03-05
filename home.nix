@@ -31,7 +31,6 @@
     noto-fonts
     dolphin
     vscode
-    nodejs_22
 		slurp
 		grim
     neofetch
