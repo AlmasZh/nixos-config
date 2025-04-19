@@ -230,5 +230,6 @@ in {
     #WAYLAND_DISPLAY="wayland-1";
     #XDG_RUNTIME_DIR="/run/user/1000";
   }; 
+	environment.sessionVariables.PATH = [ "$HOME/go/bin" ];
   system.stateVersion = "24.05";
 }

@@ -50,6 +50,7 @@
 		qemu
 		obsidian
 		awscli2
+		sqlc
   ]) ++ ([
    (pkgs.nerdfonts.override {
       fonts = [
@@ -67,6 +68,9 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+		initExtra = ''
+      export LD_LIBRARY_PATH="/nix/store/4gk773fqcsv4fh2rfkhs9bgfih86fdq8-gcc-13.3.0-lib/lib:$LD_LIBRARY_PATH"
+    '';
     
     plugins = [
      #{
