@@ -20,47 +20,65 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = ( with pkgs; [
-    telegram-desktop
+    # APPS
 		google-chrome
+    telegram-desktop
     libreoffice
     vlc
     mpv
-		okular
+		kdePackages.okular
+    kdePackages.dolphin
+		kdePackages.gwenview
+		kdePackages.kimageformats
+    vscode
+    spotify
+		qbittorrent
+		obsidian
+		virt-manager
+    postman
+
+    # CLI TOOLS
     tt
     meslo-lgs-nf
-    noto-fonts
-    dolphin
-    vscode
 		slurp
 		grim
     neofetch
-    spotify
-    postman
 		cava
 		gnumake
-		qbittorrent
-		air
-		kdePackages.gwenview
-		kdePackages.kimageformats
 		libraw
 		starship
-		gogetdoc
+
+    # DEVOPS
 		libvirt
-		virt-manager
-		qemu
-		obsidian
 		awscli2
+		qemu
+
+    # DEV TOOLS
+		gogetdoc
+		air
 		sqlc
-  ]) ++ ([
-   (pkgs.nerdfonts.override {
-      fonts = [
-        "Iosevka"
-				"Hack"
-				"Go-Mono"
-				"CascadiaMono"
-      ];
-    })
+		gcc14
+
+    # DESKTOP
+    noto-fonts
+		nerd-fonts.iosevka
+		nerd-fonts.hack
+		nerd-fonts.go-mono
+		nerd-fonts.caskaydia-mono
+    catppuccin-cursors
+    catppuccin-cursors.mochaLavender
+    catppuccin-cursors.mochaMauve
   ]);
+	#++ ([
+  # (pkgs.nerdfonts.override {
+  #    fonts = [
+  #      "Iosevka"
+	#			"Hack"
+	#			"Go-Mono"
+	#			"CascadiaMono"
+  #    ];
+  #  })
+  #]);
 
 	programs.starship.enable = true;
   programs.zsh = {
@@ -68,8 +86,8 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-		initExtra = ''
-      export LD_LIBRARY_PATH="/nix/store/4gk773fqcsv4fh2rfkhs9bgfih86fdq8-gcc-13.3.0-lib/lib:$LD_LIBRARY_PATH"
+		initContent = ''
+      # export LD_LIBRARY_PATH="/nix/store/4gk773fqcsv4fh2rfkhs9bgfih86fdq8-gcc-13.3.0-lib/lib:$LD_LIBRARY_PATH"
     '';
     
     plugins = [

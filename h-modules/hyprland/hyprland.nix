@@ -21,12 +21,11 @@
 			"$browser" = "firefox";
 
 			env = [ 
-				#"XCURSOR_SIZE,24"
+				"HYPRCURSOR_THEME,catppuccin-mocha-lavender-cursors"
 				"HYPRCURSOR_SIZE,25" 
 				"XDG_CURRENT_DESKTOP,Hyprland"
 				"XDG_SESSION_TYPE,wayland"
 				"XDG_SESSION_DESKTOP,Hyprland"
-				"XCURSOR_SIZE,36"
 				"QT_QPA_PLATFORM,wayland"
 				"XDG_SCREENSHOTS_DIR,~/screens"
 			];
@@ -50,6 +49,9 @@
 			device = {
 				name = "asup1205:00-093a:2008-touchpad";
 				enabled = false;
+			};
+			dwindle = {
+				preserve_split = true;
 			};
 
 			decoration = {
@@ -89,7 +91,7 @@
 					"$mod, D, exec, $menu"
 					"$mod, Y, pseudo,"
 					"$mod, J, togglesplit"
-					"$mod, C, exec, code"
+					"$mod, C, exec, code --disable-gpu"
 					"$mod, RETURN, fullscreen"
 
 					# Move focus with mod + arrow keys

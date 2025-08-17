@@ -1,28 +1,28 @@
-# Theme for graphical apps
 { lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    #(catppuccin-kvantum.override {
-    #  accent = "Blue";
-    #  variant = "Mocha";
-    #})
+    qt6Packages.qtstyleplugin-kvantum
+    qt6ct
+    catppuccin-cursors
+    catppuccin-papirus-folders
     papirus-folders
   ];
 
   # Cursor setup
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Lavender-Cursors";
-    #package = pkgs.catppuccin-cursors.mochaLavender;
-    package = pkgs.catppuccin-cursors;
-    #gtk.enable = true;
+    name = "catppuccin-mocha-lavender-cursors";
+    package = pkgs.catppuccin-cursors.mochaLavender;
     size = 16;
+    gtk.enable = true;
   };
+
 
   # GTK Setup
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Standard-Blue-Dark";
+      # name = "Catppuccin-Mocha-Standard-Blue-Dark";
+      name = "catppuccin-mocha-blue-standard";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "blue" ];
         size = "standard";
@@ -37,10 +37,8 @@
       };
     };
     cursorTheme = {
-      name = "Catppuccin-Mocha";
-      #name = "Catppuccin-Mocha-Lavender-Cursors";
-      #package = pkgs.catppuccin-cursors.mochaLavender;
-      package = pkgs.catppuccin-cursors;
+      name = "catppuccin-mocha-lavender-cursors";
+      package = pkgs.catppuccin-cursors.mochaLavender;
     };
     gtk3 = {
       bookmarks = [
@@ -51,17 +49,18 @@
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
   };
+
   dconf.settings = {
     "org/gtk/settings/file-chooser" = {
       sort-directories-first = true;
     };
-
     # GTK4 Setup
     "org/gnome/desktop/interface" = {
-      gtk-theme = "Catppuccin-Mocha-Standard-Blue-Dark";
-			icon-theme = "Papirus-Dark";
+      # gtk-theme = "Catppuccin-Mocha-Standard-Blue-Dark";
+      gtk-theme = "catppuccin-mocha-blue-standard";
+      icon-theme = "Papirus-Dark";
       color-scheme = "prefer-dark";
-			cursor-theme = "Catppuccin-Mocha";
+      cursor-theme = "catppuccin-mocha-lavender-cursors";
     };
   };
 
@@ -69,26 +68,16 @@
     kvantum = {
       target = "Kvantum/kvantum.kvconfig";
       text = lib.generators.toINI { } {
-        General.theme = "Catppuccin-Mocha-Blue";
+        # General.theme = "Catppuccin-Mocha-Blue";
+        General.theme = "catppuccin-mocha-blue";
       };
     };
-
-    qt5ct = {
-      target = "qt5ct/qt5ct.conf";
-      text = lib.generators.toINI { } {
-        Appearance = {
-          icon_theme = "Papirus-Dark";
-					style = "kvantum";
-        };
-      };
-    };
-
     qt6ct = {
       target = "qt6ct/qt6ct.conf";
       text = lib.generators.toINI { } {
         Appearance = {
           icon_theme = "Papirus-Dark";
-					style = "kvantum";
+          style = "kvantum";
         };
       };
     };
@@ -96,13 +85,23 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme = {
+      name = "qt6ct";
+      package = pkgs.qt6ct;
+    };
     style = {
       name = "kvantum";
+      package = pkgs.qt6Packages.qtstyleplugin-kvantum;
     };
   };
 
   systemd.user.sessionVariables = {
     QT_STYLE_OVERRIDE = "kvantum";
+    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    XCURSOR_THEME = "catppuccin-mocha-lavender-cursors";
+    XCURSOR_SIZE = "25";
+    HYPRCURSOR_THEME = "catppuccin-mocha-lavender-cursors";
+    HYPRCURSOR_SIZE = "25";
   };
 }

@@ -55,13 +55,17 @@ in {
     # here, NOT in environment.systemPackages
  #];
 
-
-      
   time.timeZone = "Asia/Almaty";
 
   xdg.portal.enable = true;
   xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ]; 
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ]; 
+
+	virtualisation.virtualbox.host.enable = true;
+	virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
+
+	users.extraGroups.vboxusers.members = [ "almas" ];
 
   # services.openssh.enable = true;
   services.pipewire = {
@@ -104,7 +108,7 @@ in {
     shell = pkgs.zsh; 
     isNormalUser = true;
     extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" ];
-    packages = with pkgs; [ firefox ];
+    #packages = with pkgs; [ unstable.firefox ];
   };
 
   nix.settings.allowed-users = [ "@wheel" "almas"];
@@ -118,14 +122,14 @@ in {
 
   nixpkgs.config.qt5 = {
     enable = true;
-    platformTheme = "qt5ct";
-    style = {
+    platformTheme = "qt5ct"; style = {
       package = pkgs.catppuccin-kvantum;
       name = "kvantum";
     };
   };
 
   environment.systemPackages = with pkgs; [
+		# CLI TOOLS
     vim
     neovim
     tree
@@ -144,7 +148,13 @@ in {
 		gnome-keyring
     cups
 		openssl
+		gawk
+    procps
+    tmux
+		superfile
+		acpi
 		
+		# PROGRAMMING
     python312Packages.pip
     python312
 		pipx
@@ -159,14 +169,17 @@ in {
     go-task
 		gotools
     go-migrate
-		nodejs_23
-
+		nodejs_24
+		ruby
+		gcc14
 		fabric-ai
+
+		# MEDIA
     ffmpeg
     jellyfin
     jellyfin-web
-		obsidian
 
+		# DEVOPS
     devbox
 		kubectl
 		kubernetes
@@ -176,16 +189,18 @@ in {
 		grafana-loki
 		gitkraken
 		ansible
+		vagrant
+    docker-compose
+    arion
 
-    gawk
-    procps
-    tmux
-		superfile
+		# APPS 
 		jetbrains.pycharm-professional
     kitty
 		gparted
-		acpi
+		obsidian
+		thunderbird
 
+		# DESKTOP
     wl-clipboard
     rofi-wayland
     hyprpaper
@@ -194,25 +209,24 @@ in {
     xdg-desktop-portal-hyprland
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    arion
-    dolphin
+		kdePackages.dolphin
     kdePackages.qtwayland
     kdePackages.qtsvg
-    docker-compose
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    qt5.qtwayland
+    qt6Packages.qtstyleplugin-kvantum
+    qt6ct
+    qt6.qtwayland
     kdePackages.breeze-gtk
     kdePackages.breeze-icons
-    kdePackages.breeze.qt5
     kdePackages.breeze
     catppuccin-cursors 
     catppuccin-papirus-folders
     papirus-folders
-  ];
+		dejavu_fonts
+		liberation_ttf
+	];
 
   # system.copySystemConfiguration = true;
-   environment.sessionVariables = {
+  environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
