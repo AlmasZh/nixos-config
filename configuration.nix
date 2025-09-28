@@ -38,6 +38,12 @@ in {
     };
   };
 
+	virtualisation.waydroid.enable = true;
+
+	services.pulseaudio.enable = false; # make sure only pipewire runs
+	hardware.enableAllFirmware = true;
+
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos";
@@ -153,6 +159,7 @@ in {
     tmux
 		superfile
 		acpi
+		waydroid
 		
 		# PROGRAMMING
     python312Packages.pip
@@ -185,6 +192,7 @@ in {
 		kubernetes
 		minikube
 		k9s
+		terraform
 		grafana
 		grafana-loki
 		gitkraken
@@ -199,6 +207,7 @@ in {
 		gparted
 		obsidian
 		thunderbird
+		genymotion
 
 		# DESKTOP
     wl-clipboard

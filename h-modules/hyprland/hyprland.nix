@@ -42,7 +42,14 @@
 				sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 			};
 
-			monitor=",preferred,auto,1";
+			cursor = {
+				no_hardware_cursors = true;
+			};
+			monitor=[
+				",preferred,auto,1"
+				#"HDMI-A-1,preferred@100,auto,1"
+				#"eDP-1,disable"
+			];
 			misc = {
 				force_default_wallpaper = 0;
 			};

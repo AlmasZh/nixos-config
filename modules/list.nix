@@ -8,6 +8,7 @@
 		./wm.nix
 		./virtualization.nix
 		./testing_tools.nix
+		./sudoers.nix
 	#	./kubernetes.nix
 	];
 }
