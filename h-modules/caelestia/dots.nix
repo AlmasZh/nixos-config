@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{config, pkgs, lib, caelestia-shell, ...}:
 {
 	programs.caelestia = {
 		enable = true;

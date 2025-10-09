@@ -11,6 +11,9 @@
 		#package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 		xwayland.enable = true;
 	  
+		#extraConfig = ''
+		#	exec-once = caelestia shell -d
+		#'';
 
 		settings = {
 			"$mod" = "SUPER";
@@ -90,7 +93,8 @@
 				[
 					"$mod, R, exec, $terminal"
 					"$mod, F, exec, $browser"
-					"$mod, G, exec, $hyprlock"
+					"$mod+SHIFT, G, exec, $hyprlock"
+					"$mod, G, global, caelestia:lock"
 					"$mod, Q, killactive,"
 			#	"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"

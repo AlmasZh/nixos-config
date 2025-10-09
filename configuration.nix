@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, caelestia, ... }:
 let
 	goroot = "${pkgs.go}/share/go";
 in {
@@ -133,8 +133,9 @@ in {
       name = "kvantum";
     };
   };
-
-  environment.systemPackages = with pkgs; [
+	
+  
+	environment.systemPackages = with pkgs; [
 		# CLI TOOLS
     vim
     neovim
