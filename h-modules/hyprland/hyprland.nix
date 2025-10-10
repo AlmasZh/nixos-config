@@ -96,6 +96,7 @@
 					"$mod+SHIFT, G, exec, $hyprlock"
 					"$mod, G, global, caelestia:lock"
 					"$mod, Q, killactive,"
+					"$mod, M, exec, code --disable-gpu ~/.dotfiles/"
 			#	"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"
 					"$mod, V, togglefloating,"
