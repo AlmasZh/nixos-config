@@ -87,6 +87,12 @@
 			};
 			windowrulev2 = [
 				"opacity 0.80 0.80,class:^(kitty|code)"
+				"workspace special:third silent, class:^(obsidian)$"
+				# Telegram
+				"workspace special:fourth silent, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
+				"size 1395 1380, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
+				"move 135 35, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
+				"float, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
 				#"opacity 0.90 0.90,class:^(obsidian)"
 			];
 			bind =
@@ -97,6 +103,10 @@
 					"$mod, G, global, caelestia:lock"
 					"$mod, Q, killactive,"
 					"$mod, M, exec, code --disable-gpu ~/.dotfiles/"
+					# "$mod, T, exec, [workspace special:fourth silent] telegram-desktop & [workspace 1 silent] firefox & [workspace special:third silent] obsidian"
+					# "$mod, T, exec, [workspace special:fourth silent] telegram-desktop"
+					# "$mod, T, exec, [workspace 1 silent] firefox"
+					# "$mod, T, exec, [workspace special:third silent] obsidian"
 			#	"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"
 					"$mod, V, togglefloating,"
