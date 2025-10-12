@@ -137,68 +137,40 @@ in {
   
 	environment.systemPackages = with pkgs; [
 		# CLI TOOLS
-    vim
-    neovim
-    tree
-    curl
-    git
-		gh
-    wget
+    vim neovim tmux superfile
+    git gh
+    tree curl wget fish
     lshw
-    btop
-    htop
-		fish
-    unzip
-    gzip
-    zip
+    btop htop
+    unzip gzip zip
  		eza
 		gnome-keyring
     cups
 		openssl
 		gawk
     procps
-    tmux
-		superfile
 		acpi
 		waydroid
 		
 		# PROGRAMMING
-    python312Packages.pip
-    python312
-		pipx
-		gcc
-		glibc
-		gcc.libc
-		glibc.dev
-		libgcc
+    python312Packages.pip python312 pipx
+		gcc glibc gcc.libc glibc.dev libgcc gcc14
 		zlib
 		libjpeg
-    go
-    go-task
-		gotools
-    go-migrate
+    go go-task gotools go-migrate
 		nodejs_24
 		ruby
-		gcc14
 		fabric-ai
 
 		# MEDIA
-    ffmpeg
-    jellyfin
-    jellyfin-web
+    ffmpeg jellyfin jellyfin-web
 
 		# DEVOPS
     devbox
-		kubectl
-		kubernetes
-		minikube
-		k9s
-		terraform
-		grafana
-		grafana-loki
+		kubectl kubernetes minikube k9s
+		terraform ansible vagrant
+		grafana grafana-loki
 		gitkraken
-		ansible
-		vagrant
     docker-compose
     arion
 
@@ -213,26 +185,13 @@ in {
 		# DESKTOP
     wl-clipboard
     rofi-wayland
-    hyprpaper
-    hyprlock
-    hyprcursor
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-		kdePackages.dolphin
-    kdePackages.qtwayland
-    kdePackages.qtsvg
-    qt6Packages.qtstyleplugin-kvantum
-    qt6ct
-    qt6.qtwayland
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-    kdePackages.breeze
-    catppuccin-cursors 
-    catppuccin-papirus-folders
-    papirus-folders
-		dejavu_fonts
-		liberation_ttf
+    hyprpaper hyprlock hyprcursor
+    xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-gtk
+		kdePackages.dolphin kdePackages.qtwayland kdePackages.qtsvg
+    qt6Packages.qtstyleplugin-kvantum qt6ct qt6.qtwayland
+    kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
+    catppuccin-cursors catppuccin-papirus-folders papirus-folders
+		dejavu_fonts liberation_ttf
 	];
 
   # system.copySystemConfiguration = true;
