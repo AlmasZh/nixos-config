@@ -98,8 +98,11 @@ in {
   services.udisks2.enable = true;
 	services.gvfs.enable = true;
 	services.devmon.enable = true;
-
   security.rtkit.enable = true;
+
+  # Gnome
+  services.gnome.core-apps.enable = true;
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
   
   programs.zsh.enable = true;
   programs.mtr.enable = true;

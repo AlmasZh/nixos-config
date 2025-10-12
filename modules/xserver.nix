@@ -6,6 +6,7 @@
       variant = "";
       options = "caps:escape";
 		};
+    desktopManager.gnome.enable = true;
     videoDrivers = [ "amdgpu" ];
   };
 
