@@ -11,9 +11,19 @@
 		#package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 		xwayland.enable = true;
 	  
-		#extraConfig = ''
-		#	exec-once = caelestia shell -d
-		#'';
+		extraConfig = ''
+			env = XDG_CURRENT_DESKTOP,Hyprland
+			env = XDG_SESSION_DESKTOP,Hyprland
+			env = XDG_SESSION_TYPE,wayland
+			env = GDK_BACKEND,wayland
+			env = QT_QPA_PLATFORM,wayland
+			env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+			env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+			env = MOZ_ENABLE_WAYLAND,1
+			env = GTK_USE_PORTAL,1
+		'';
+			# add it inside extra config to enable caelestia at the startup 
+			# exec-once = caelestia shell -d
 
 		settings = {
 			"$mod" = "SUPER";
