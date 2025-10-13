@@ -71,17 +71,11 @@
 		google-chrome
     telegram-desktop
     libreoffice
-    vlc
-    mpv
-		kdePackages.okular
-    kdePackages.dolphin
-		kdePackages.gwenview
-		kdePackages.kimageformats
-    spotify
+    vlc mpv spotify
+		kdePackages.okular kdePackages.dolphin kdePackages.gwenview kdePackages.kimageformats
 		qbittorrent
 		obsidian
-		virt-manager
-    postman
+		virt-manager postman
 
     # CLI TOOLS
     tt
@@ -106,14 +100,8 @@
 		gcc14
 
     # DESKTOP
-    noto-fonts
-		nerd-fonts.iosevka
-		nerd-fonts.hack
-		nerd-fonts.go-mono
-		nerd-fonts.caskaydia-mono
-    catppuccin-cursors
-    catppuccin-cursors.mochaLavender
-    catppuccin-cursors.mochaMauve
+    noto-fonts nerd-fonts.iosevka nerd-fonts.hack nerd-fonts.go-mono nerd-fonts.caskaydia-mono
+    catppuccin-cursors catppuccin-cursors.mochaLavender catppuccin-cursors.mochaMauve
   ]);
 	#++ ([
   # (pkgs.nerdfonts.override {
