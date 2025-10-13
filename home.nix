@@ -69,7 +69,7 @@
   home.packages = ( with pkgs; [
     # APPS
 		google-chrome
-    telegram-desktop
+    telegram-desktop discord
     libreoffice
     vlc mpv spotify
 		kdePackages.okular kdePackages.dolphin kdePackages.gwenview kdePackages.kimageformats
