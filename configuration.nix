@@ -141,7 +141,7 @@ in {
 	environment.systemPackages = with pkgs; [
 		# CLI TOOLS
     vim neovim tmux superfile
-    git gh
+    git gh gitFull
     tree curl wget fish
     lshw
     btop htop
