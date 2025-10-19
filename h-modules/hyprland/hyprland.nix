@@ -98,11 +98,18 @@
 			windowrulev2 = [
 				"opacity 0.80 0.80,class:^(kitty|code)"
 				"workspace special:third silent, class:^(obsidian)$"
+
 				# Telegram
 				"workspace special:fourth silent, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
 				"size 1395 1380, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
 				"move 135 35, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
 				"float, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"
+
+				# Discord
+				"workspace special:fourth silent, class:(discord)"
+				"size 1600 800, class:(discord)"
+				"move 1630 35, class:(discord)"
+				"float, class:(discord)"
 				#"opacity 0.90 0.90,class:^(obsidian)"
 			];
 			bind =

@@ -146,7 +146,7 @@ in {
     lshw
     btop htop
     unzip gzip zip
- 		eza
+    eza
 		gnome-keyring
     cups
 		openssl
@@ -156,7 +156,7 @@ in {
 		waydroid
 		
 		# PROGRAMMING
-    python312Packages.pip python312 pipx
+    python312 python312Packages.pip python312Packages.virtualenv pipx
 		gcc glibc gcc.libc glibc.dev libgcc gcc14
 		zlib
 		libjpeg
