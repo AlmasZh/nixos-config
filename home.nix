@@ -90,7 +90,7 @@
 
     # DEVOPS
 		libvirt
-		awscli2
+		awscli2 google-cloud-sdk
 		qemu
 
     # DEV TOOLS
