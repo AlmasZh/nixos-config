@@ -87,6 +87,7 @@
 		gnumake
 		libraw
 		starship
+    uv
 
     # DEVOPS
 		libvirt
