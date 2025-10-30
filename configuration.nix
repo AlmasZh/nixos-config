@@ -94,6 +94,7 @@ in {
   services.power-profiles-daemon.enable = true;
   services.jellyfin.enable = false;
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services.udisks2.enable = true;
 	services.gvfs.enable = true;

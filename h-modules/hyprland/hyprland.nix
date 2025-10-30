@@ -21,6 +21,10 @@
 			env = QT_AUTO_SCREEN_SCALE_FACTOR,1
 			env = MOZ_ENABLE_WAYLAND,1
 			env = GTK_USE_PORTAL,1
+			
+			exec-once = eval $(${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+			exec-once = export SSH_AUTH_SOCK
+			exec-once = /run/current-system/sw/libexec/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 		'';
 			# add it inside extra config to enable caelestia at the startup 
 			# exec-once = caelestia shell -d
