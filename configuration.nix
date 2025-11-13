@@ -38,11 +38,18 @@ in {
     };
   };
 
+  # boot.kernelParams = [ "amdgpu.backlight=0" ];
+  boot.kernelParams = [ "acpi_backlight=native" ];
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="nvidia_wmi_ec_backlight", ATTR{brightness}=="0"
+  # '';
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  hardware.acpilight.enable = true; 
+
 	virtualisation.waydroid.enable = true;
 
 	services.pulseaudio.enable = false; # make sure only pipewire runs
 	hardware.enableAllFirmware = true;
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -61,11 +68,26 @@ in {
     # here, NOT in environment.systemPackages
  #];
 
+  services.resolved.enable = true;
+  environment.etc."systemd/resolved.conf".text = ''
+    [Resolve]
+    DNS=45.90.28.0#84d51a.dns.nextdns.io
+    DNS=2a07:a8c0::#84d51a.dns.nextdns.io
+    DNS=45.90.30.0#84d51a.dns.nextdns.io
+    DNS=2a07:a8c1::#84d51a.dns.nextdns.io
+    DNSOverTLS=yes
+  '';
+
+  networking.networkmanager.dns = "systemd-resolved";
+
   time.timeZone = "Asia/Almaty";
 
   xdg.portal.enable = true;
-  xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ]; 
+  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
+
+  # xdg.portal.enable = true;
+  # xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ]; 
 
 	virtualisation.virtualbox.host.enable = true;
 	virtualisation.virtualbox.guest.enable = true;
@@ -188,12 +210,15 @@ in {
 
 		# DESKTOP
     wl-clipboard
+    brightnessctl
     rofi-wayland
     hyprpaper hyprlock hyprcursor
     xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-gtk
-		kdePackages.dolphin kdePackages.qtwayland kdePackages.qtsvg
-    qt6Packages.qtstyleplugin-kvantum qt6ct qt6.qtwayland
+		kdePackages.qtwayland kdePackages.qtsvg
+    kdePackages.ffmpegthumbs kdePackages.kdegraphics-thumbnailers
+    qt6Packages.qtstyleplugin-kvantum qt6.qtwayland
     kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
+    kdePackages.plasma-integration
     catppuccin-cursors catppuccin-papirus-folders papirus-folders
 		dejavu_fonts liberation_ttf
 	];

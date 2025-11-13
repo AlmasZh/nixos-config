@@ -68,11 +68,20 @@
 
   home.packages = ( with pkgs; [
     # APPS
+    xfce.thunar
+    xfce.thunar-volman            # automount drives
+    xfce.tumbler                  # thumbnail generation
+    xfce.thunar-archive-plugin    # right-click extract/compress
+    xfce.thunar-media-tags-plugin # audio tag view/edit
+    xfce.catfish                  # search tool
+    gvfs                          # mount network drives (smb, sftp)
+    sushi                         # Quick previewer for Nautilus
 		google-chrome
     telegram-desktop discord
     libreoffice
     vlc mpv spotify
-		kdePackages.okular kdePackages.dolphin kdePackages.gwenview kdePackages.kimageformats
+		kdePackages.okular kdePackages.gwenview kdePackages.kimageformats
+    kdePackages.ffmpegthumbs kdePackages.kdegraphics-thumbnailers
 		qbittorrent
 		obsidian
 		virt-manager postman
@@ -103,17 +112,11 @@
     # DESKTOP
     noto-fonts nerd-fonts.iosevka nerd-fonts.hack nerd-fonts.go-mono nerd-fonts.caskaydia-mono
     catppuccin-cursors catppuccin-cursors.mochaLavender catppuccin-cursors.mochaMauve
+
+    # THEMING
+    qt6ct
+    catppuccin-kvantum
   ]);
-	#++ ([
-  # (pkgs.nerdfonts.override {
-  #    fonts = [
-  #      "Iosevka"
-	#			"Hack"
-	#			"Go-Mono"
-	#			"CascadiaMono"
-  #    ];
-  #  })
-  #]);
 
 	programs.starship.enable = true;
   programs.zsh = {

@@ -25,6 +25,9 @@
 			exec-once = eval $(${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 			exec-once = export SSH_AUTH_SOCK
 			exec-once = /run/current-system/sw/libexec/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+			exec-once = ${pkgs.kdePackages.plasma-integration}/bin/plasma-apply-colorscheme BreezeDark
+			exec-once = ${pkgs.libsForQt5.qt5.qtwayland}/bin/qtwaylandscanner
+			exec-once = caelestia shell -d
 		'';
 			# add it inside extra config to enable caelestia at the startup 
 			# exec-once = caelestia shell -d
@@ -32,7 +35,7 @@
 		settings = {
 			"$mod" = "SUPER";
 			"$terminal" = "kitty"; 
-			"$fileManager" = "dolphin";
+			"$fileManager" = "thunar";
 			"$menu" = "rofi -show drun";
 			"$hyprlock" = "hyprlock --immediate";
 			"$browser" = "firefox";
