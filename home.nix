@@ -74,6 +74,8 @@
     xfce.thunar-archive-plugin    # right-click extract/compress
     xfce.thunar-media-tags-plugin # audio tag view/edit
     xfce.catfish                  # search tool
+    ffmpegthumbnailer
+    file-roller
     gvfs                          # mount network drives (smb, sftp)
     sushi                         # Quick previewer for Nautilus
 		google-chrome

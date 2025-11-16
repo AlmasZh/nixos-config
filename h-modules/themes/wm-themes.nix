@@ -36,12 +36,16 @@
   # QT
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "qt6ct";
     style = {
       name = "kvantum";
       package = pkgs.qt6Packages.qtstyleplugin-kvantum; # or qt6
     };
   };
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=Catppuccin-Mocha-Blue
+  '';
 
   # Environment
   home.sessionVariables = {

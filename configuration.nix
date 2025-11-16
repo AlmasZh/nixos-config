@@ -83,7 +83,8 @@ in {
   time.timeZone = "Asia/Almaty";
 
   xdg.portal.enable = true;
-  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
+  # xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
+  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
 
   # xdg.portal.enable = true;
   # xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
@@ -99,11 +100,28 @@ in {
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
-		wireplumber.enable = true;
-  };
+    alsa.enable = true;
+    alsa.support32Bit = true;
 
+    wireplumber = {
+      enable = true;
+      extraConfig = {
+        "10-echo-cancel" = {
+          "filter-chain" = {
+            "nodes" = {
+              "echo-cancel" = {
+                "type" = "echo-cancel";
+                "properties" = {
+                  "aec.method" = "webrtc";
+                  "aec.dump" = false;
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 	#hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 	hardware.bluetooth = {
@@ -177,6 +195,8 @@ in {
     procps
 		acpi
 		waydroid
+    pavucontrol
+    noisetorch
 		
 		# PROGRAMMING
     python312 python312Packages.pip python312Packages.virtualenv pipx
