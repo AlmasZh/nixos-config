@@ -103,6 +103,8 @@
     # DEVOPS
 		libvirt
 		awscli2 google-cloud-sdk
+    tenv ansible gitkraken
+    jetbrains-toolbox
 		qemu
 
     # DEV TOOLS
