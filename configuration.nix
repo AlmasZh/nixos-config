@@ -20,32 +20,27 @@ in {
 
       #menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'osprober-efi-7823-188A' {
       extraEntries = ''
-			menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'custom-windows' {
-				insmod part_gpt
-				insmod fat
-				search --no-floppy --fs-uuid --set=root 7823-188A
-				chainloader /efi/Microsoft/Boot/bootmgfw.efi
-						}
-		 
-						menuentry "Shutdown" {
-							halt
-			}
+        menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'custom-windows' {
+          insmod part_gpt
+          insmod fat
+          search --no-floppy --fs-uuid --set=root 7823-188A
+          chainloader /efi/Microsoft/Boot/bootmgfw.efi
+              }
 
-			menuentry "Reboot" {
-							reboot
-			}
-     '';
+              menuentry "Shutdown" {
+                halt
+        }
+
+        menuentry "Reboot" {
+                reboot
+        }
+      '';
     };
   };
 
   # boot.kernelParams = [ "amdgpu.backlight=0" "acpi_backlight=none" ];
   # boot.kernelParams = [ "acpi_backlight=native" ];
-  # services.udev.extraRules = ''
-  #   ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="nvidia_wmi_ec_backlight", ATTR{brightness}=="0"
-  # '';
   hardware.acpilight.enable = true; 
-
-	virtualisation.waydroid.enable = true;
 
 	services.pulseaudio.enable = false; # make sure only pipewire runs
 	hardware.enableAllFirmware = true;
@@ -66,7 +61,7 @@ in {
 	#programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
- #];
+  #];
 
   services.resolved.enable = true;
   environment.etc."systemd/resolved.conf".text = ''
@@ -83,18 +78,9 @@ in {
   time.timeZone = "Asia/Almaty";
 
   xdg.portal.enable = true;
-  # xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
   xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-
-  # xdg.portal.enable = true;
-  # xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
+  # xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ]; 
-
-	virtualisation.virtualbox.host.enable = true;
-	virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.dragAndDrop = true;
-
-	users.extraGroups.vboxusers.members = [ "almas" ];
 
   # services.openssh.enable = true;
   services.pipewire = {
@@ -211,10 +197,7 @@ in {
 		kubectl kubernetes minikube k9s
 		vagrant
 		grafana grafana-loki
-    docker-compose
-    arion
     lazygit
-    
 
 		# APPS 
     kitty
