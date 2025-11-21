@@ -38,12 +38,11 @@ in {
     };
   };
 
-  # boot.kernelParams = [ "amdgpu.backlight=0" ];
-  boot.kernelParams = [ "acpi_backlight=native" ];
+  # boot.kernelParams = [ "amdgpu.backlight=0" "acpi_backlight=none" ];
+  # boot.kernelParams = [ "acpi_backlight=native" ];
   # services.udev.extraRules = ''
   #   ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="nvidia_wmi_ec_backlight", ATTR{brightness}=="0"
   # '';
-  services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.acpilight.enable = true; 
 
 	virtualisation.waydroid.enable = true;
@@ -134,17 +133,12 @@ in {
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   services.jellyfin.enable = false;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services.udisks2.enable = true;
 	services.gvfs.enable = true;
 	services.devmon.enable = true;
   security.rtkit.enable = true;
 
-  # Gnome
-  services.gnome.core-apps.enable = true;
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
   
   programs.zsh.enable = true;
   programs.mtr.enable = true;
@@ -252,6 +246,7 @@ in {
 
   #   #XDG_RUNTIME_DIR="/run/user/1000";
   # }; 
+  environment.variables.BRIGHTNESS_DEVICE = "amdgpu_bl1";
 	environment.sessionVariables.PATH = [ "$HOME/go/bin" ];
   system.stateVersion = "24.05";
 }

@@ -105,6 +105,8 @@
 			windowrulev2 = [
 				"opacity 0.80 0.80,class:^(kitty|code)"
 				"workspace special:third silent, class:^(obsidian)$"
+				"float, class:(firefox|google-chrome|org.kde.okular|kitty)"
+				"size 1800 1000, class:(org.kde.okular)"
 
 				# Telegram
 				"workspace special:fourth silent, class:(org.telegram.desktop|telegram-desktop|TelegramDesktop)"

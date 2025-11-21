@@ -7,7 +7,7 @@
 		./xserver.nix
 		./wm.nix
 		./virtualization.nix
-		./testing_tools.nix
+		./dev.nix
 		./sudoers.nix
 	#	./kubernetes.nix
 	];

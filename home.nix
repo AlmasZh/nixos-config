@@ -149,6 +149,8 @@
 
     shellAliases = {
       c = "clear";
+      dus = "du -sh ./";
+      dusa = "du -sh ./*";
 			l = "eza -la --icons --group-directories-first";
       icat = "kitty +kitten icat";
       ".." = "cd ..";
