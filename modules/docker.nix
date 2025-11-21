@@ -5,7 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     docker-compose
-    arion
+    # arion
   ];
 }
 

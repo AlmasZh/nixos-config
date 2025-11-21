@@ -9,6 +9,7 @@
 		./virtualization.nix
 		./dev.nix
 		./sudoers.nix
+		./k3s.nix
 	#	./kubernetes.nix
 	];
 }
