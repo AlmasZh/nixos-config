@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, unstablePkgs, ... }: 
 
 {
   imports = [
@@ -120,7 +120,9 @@
     # THEMING
     qt6ct
     catppuccin-kvantum
-  ]);
+  ]) ++ [
+    unstablePkgs.antigravity
+  ];
 
 	programs.starship.enable = true;
   programs.zsh = {

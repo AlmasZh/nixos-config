@@ -125,7 +125,7 @@ in {
 	services.devmon.enable = true;
   security.rtkit.enable = true;
 
-  
+	programs.wireshark.enable = true;
   programs.zsh.enable = true;
   programs.mtr.enable = true;
   programs.hyprland.enable = true;
@@ -138,7 +138,7 @@ in {
   users.users.almas = {
     shell = pkgs.zsh; 
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" "wireshark" ];
     #packages = with pkgs; [ unstable.firefox ];
   };
 
@@ -178,6 +178,9 @@ in {
 		waydroid
     pavucontrol
     noisetorch
+
+    # Security
+    wireshark
 		
 		# PROGRAMMING
     python312 python312Packages.pip python312Packages.virtualenv pipx

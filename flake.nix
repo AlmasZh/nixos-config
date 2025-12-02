@@ -44,34 +44,35 @@
 		homeConfigurations = {
 			almas = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
+				extraSpecialArgs = { inherit unstablePkgs; };
 				modules = [ 
 					./home.nix
 					caelestia-shell.homeManagerModules.default
-					{
-						programs.caelestia = {
-							enable = true;
-							systemd = {
-								enable = false; # if you prefer starting from your compositor
-								target = "graphical-session.target";
-								environment = [];
-							};
-							settings = {
-								bar.status = {
-									showBattery = false;
-								};
-								paths.wallpaperDir = "~/Images";
-							};
-							cli = {
-								enable = true; # Also add caelestia-cli to path
-								settings = {
-									theme.enableGtk = false;
-								};
-							};
-						};
-						home.packages = [
-							#caelestia-shell.packages.${system}.default
-						];
-					}
+					# {
+					# 	programs.caelestia = {
+					# 		enable = true;
+					# 		systemd = {
+					# 			enable = false; # if you prefer starting from your compositor
+					# 			target = "graphical-session.target";
+					# 			environment = [];
+					# 		};
+					# 		settings = {
+					# 			bar.status = {
+					# 				showBattery = false;
+					# 			};
+					# 			paths.wallpaperDir = "~/Images";
+					# 		};
+					# 		cli = {
+					# 			enable = true; # Also add caelestia-cli to path
+					# 			settings = {
+					# 				theme.enableGtk = false;
+					# 			};
+					# 		};
+					# 	};
+					# 	home.packages = [
+					# 		#caelestia-shell.packages.${system}.default
+					# 	];
+					# }
 				];
 			};
 		};
