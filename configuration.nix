@@ -212,7 +212,7 @@ in {
 		# DESKTOP
     wl-clipboard
     brightnessctl
-    rofi-wayland
+    rofi
     hyprpaper hyprlock hyprcursor
     xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-gtk
 		kdePackages.qtwayland kdePackages.qtsvg

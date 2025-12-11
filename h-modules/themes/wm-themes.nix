@@ -62,5 +62,6 @@
   # Install qt6ct
   home.packages = with pkgs; [
     qt6Packages.qt6ct
+    catppuccin-kvantum
   ];
 }

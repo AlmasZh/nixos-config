@@ -1,16 +1,16 @@
 { pkgs, lib, ... }:
 
 {
-  xdg.portal.enable = true;
-  xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
+	xdg.portal.enable = true;
+	xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
+	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
 
 	wayland.windowManager.hyprland = {
 		enable = true;
 		systemd.variables = ["--all"];
 		#package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 		xwayland.enable = true;
-	  
+
 		extraConfig = ''
 			env = XDG_CURRENT_DESKTOP,Hyprland
 			env = XDG_SESSION_DESKTOP,Hyprland
@@ -27,10 +27,7 @@
 			exec-once = /run/current-system/sw/libexec/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 			exec-once = ${pkgs.kdePackages.plasma-integration}/bin/plasma-apply-colorscheme BreezeDark
 			exec-once = ${pkgs.libsForQt5.qt5.qtwayland}/bin/qtwaylandscanner
-			exec-once = caelestia shell -d
 		'';
-			# add it inside extra config to enable caelestia at the startup 
-			# exec-once = caelestia shell -d
 
 		settings = {
 			"$mod" = "SUPER";

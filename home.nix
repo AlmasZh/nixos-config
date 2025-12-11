@@ -10,11 +10,16 @@
 
 	programs.git = {
 		enable = true;
-		userName = "AlmasZh";
-		userEmail = "almas.zh22@gmail.com";
-		extraConfig = {
+    settings = {
+      user = {
+        email = "almas.zh22@gmail.com";
+        name = "AlmasZh";
+      };
+
 			credential.helper = "store";
-		};
+    };
+		# extraConfig = {
+		# };
 	};
 
 	systemd.user.services.kanshi.Service.Restart = "always";
@@ -117,9 +122,6 @@
     noto-fonts nerd-fonts.iosevka nerd-fonts.hack nerd-fonts.go-mono nerd-fonts.caskaydia-mono
     catppuccin-cursors catppuccin-cursors.mochaLavender catppuccin-cursors.mochaMauve
 
-    # THEMING
-    qt6ct
-    catppuccin-kvantum
   ]) ++ [
     unstablePkgs.antigravity
   ];
