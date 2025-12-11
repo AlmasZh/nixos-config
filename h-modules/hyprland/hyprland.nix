@@ -8,7 +8,6 @@
 	wayland.windowManager.hyprland = {
 		enable = true;
 		systemd.variables = ["--all"];
-		#package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 		xwayland.enable = true;
 
 		extraConfig = ''

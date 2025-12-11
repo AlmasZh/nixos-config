@@ -18,8 +18,6 @@
 
 			credential.helper = "store";
     };
-		# extraConfig = {
-		# };
 	};
 
 	systemd.user.services.kanshi.Service.Restart = "always";

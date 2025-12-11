@@ -38,11 +38,9 @@ in {
     };
   };
 
-  # boot.kernelParams = [ "amdgpu.backlight=0" "acpi_backlight=none" ];
-  # boot.kernelParams = [ "acpi_backlight=native" ];
   hardware.acpilight.enable = true; 
 
-	services.pulseaudio.enable = false; # make sure only pipewire runs
+	services.pulseaudio.enable = false;
 	hardware.enableAllFirmware = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -79,8 +77,6 @@ in {
 
   xdg.portal.enable = true;
   xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-  # xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.kdePackages.xdg-desktop-portal-kde ];
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ]; 
 
   # services.openssh.enable = true;
   services.pipewire = {
@@ -108,7 +104,6 @@ in {
       };
     };
   };
-	#hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 	hardware.bluetooth = {
 		enable = true;
@@ -139,17 +134,9 @@ in {
     shell = pkgs.zsh; 
     isNormalUser = true;
     extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" "wireshark" ];
-    #packages = with pkgs; [ unstable.firefox ];
   };
 
   nix.settings.allowed-users = [ "@wheel" "almas"];
-
-  users.users.nixosvmtest = {
-    isSystemUser = true;
-    initialPassword = "test";
-    group = "nixosvmtest";
-  };
-  users.groups.nixosvmtest = {};
 
   nixpkgs.config.qt5 = {
     enable = true;
@@ -158,8 +145,8 @@ in {
       name = "kvantum";
     };
   };
-	
-  
+
+
 	environment.systemPackages = with pkgs; [
 		# CLI TOOLS
     vim neovim tmux superfile
