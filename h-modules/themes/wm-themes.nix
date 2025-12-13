@@ -1,6 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
+  nixpkgs.config.qt5 = {
+    enable = true;
+    platformTheme = "qt5ct"; style = {
+      package = pkgs.catppuccin-kvantum;
+      name = "kvantum";
+    };
+  };
+
   # Cursor
   home.pointerCursor = {
     name = "catppuccin-mocha-lavender-cursors";

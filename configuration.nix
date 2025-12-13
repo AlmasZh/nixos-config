@@ -1,10 +1,10 @@
 { config, lib, pkgs, caelestia, ... }:
-let
-	goroot = "${pkgs.go}/share/go";
-in {
+{
   imports =
     [
       ./hardware-configuration.nix
+      ./hardware.nix
+      ./network.nix
 			./modules/list.nix
     ];
 
@@ -18,7 +18,6 @@ in {
       device = "nodev";
       useOSProber = false; 
 
-      #menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'osprober-efi-7823-188A' {
       extraEntries = ''
         menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'custom-windows' {
           insmod part_gpt
@@ -38,20 +37,11 @@ in {
     };
   };
 
-  hardware.acpilight.enable = true; 
-
-	services.pulseaudio.enable = false;
-	hardware.enableAllFirmware = true;
-
+  ### OS SPECIFIC
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true; 
-  networking.firewall.allowedTCPPorts = [  ];
-  networking.firewall.allowedUDPPorts = [  ];
-  networking.firewall.enable = false;
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  time.timeZone = "Asia/Almaty";
+
   # TESTING
 	#  programs.nix-ld.enable = true;
 
@@ -60,54 +50,11 @@ in {
     # here, NOT in environment.systemPackages
   #];
 
-  services.resolved.enable = true;
-  environment.etc."systemd/resolved.conf".text = ''
-    [Resolve]
-    DNS=45.90.28.0#84d51a.dns.nextdns.io
-    DNS=2a07:a8c0::#84d51a.dns.nextdns.io
-    DNS=45.90.30.0#84d51a.dns.nextdns.io
-    DNS=2a07:a8c1::#84d51a.dns.nextdns.io
-    DNSOverTLS=yes
-  '';
-
-  networking.networkmanager.dns = "systemd-resolved";
-
-  time.timeZone = "Asia/Almaty";
-
+  programs.hyprland.enable = true;
   xdg.portal.enable = true;
   xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
 
   # services.openssh.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-
-    wireplumber = {
-      enable = true;
-      extraConfig = {
-        "10-echo-cancel" = {
-          "filter-chain" = {
-            "nodes" = {
-              "echo-cancel" = {
-                "type" = "echo-cancel";
-                "properties" = {
-                  "aec.method" = "webrtc";
-                  "aec.dump" = false;
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-  services.blueman.enable = true;
-	hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = true;
-	};
 
   services.flatpak.enable = true;
   services.upower.enable = true;
@@ -117,12 +64,9 @@ in {
   services.udisks2.enable = true;
 	services.gvfs.enable = true;
 	services.devmon.enable = true;
-  security.rtkit.enable = true;
 
-	programs.wireshark.enable = true;
   programs.zsh.enable = true;
   programs.mtr.enable = true;
-  programs.hyprland.enable = true;
   programs.dconf.enable = true;
 	programs.gnupg.agent = {
     enable = true;
@@ -136,15 +80,6 @@ in {
   };
 
   nix.settings.allowed-users = [ "@wheel" "almas"];
-
-  nixpkgs.config.qt5 = {
-    enable = true;
-    platformTheme = "qt5ct"; style = {
-      package = pkgs.catppuccin-kvantum;
-      name = "kvantum";
-    };
-  };
-
 
 	environment.systemPackages = with pkgs; [
 		# CLI TOOLS
@@ -165,9 +100,6 @@ in {
     pavucontrol
     noisetorch
 
-    # Security
-    wireshark
-		
 		# PROGRAMMING
     python312 python312Packages.pip python312Packages.virtualenv pipx
 		gcc glibc gcc.libc glibc.dev libgcc gcc14
