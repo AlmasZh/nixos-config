@@ -47,7 +47,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos";
   networking.networkmanager.enable = true; 
-  systemd.services."NetworkManager-wait-online".wantedBy = [];
   networking.firewall.allowedTCPPorts = [  ];
   networking.firewall.allowedUDPPorts = [  ];
   networking.firewall.enable = false;

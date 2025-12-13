@@ -1,34 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  #services.displayManager.sddm = {
-    #enable = true;
-    #wayland.enable = true;
-		#enableHidpi = true;
-		#package = pkgs.sddm;
-  #};
-
-	services.greetd = {
+  services.displayManager.sddm = {
     enable = true;
+    theme = "elarun";
     settings = {
-      default_session = {
-        user = "almas";
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
+      Theme = {
+        Current = "elarun";
+        ThemeDir = "/run/current-system/sw/share/sddm/themes";
+        FacesDir = "/run/current-system/sw/share/sddm/faces";
       };
     };
   };
-
-  #greetd = {
-  #  enable = true;
-  #  restart = false;
-    #settings = {
-      #default_session = {
-        #command = ''
-          #$(lib.makeBinPath [ pkgs.greetd.regreet ])
-	#'';
-      #};
-    #};
-  #};
-
-  #programs.regreet.enable = true;
+  services.displayManager.defaultSession = "hyprland";
 }
