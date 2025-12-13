@@ -1,8 +1,7 @@
 { config, pkgs, ...}:
 
 {
-	#virtualisation.vmware.host.enable = true;	
-	virtualisation.waydroid.enable = true;
+	# virtualisation.waydroid.enable = true;
 
 	virtualisation.virtualbox.host.enable = true;
 	virtualisation.virtualbox.guest.enable = true;
@@ -10,7 +9,7 @@
 	users.extraGroups.vboxusers.members = [ "almas" ];
 
 	virtualisation.libvirtd = {
-		enable = true;
+		enable = false;
 		qemu.runAsRoot = false;
 		allowedBridges = [
 			"nm-bridge"
