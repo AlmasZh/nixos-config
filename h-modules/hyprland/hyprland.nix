@@ -7,21 +7,8 @@
 		xwayland.enable = true;
 
 		extraConfig = ''
-			env = XDG_CURRENT_DESKTOP,Hyprland
-			env = XDG_SESSION_DESKTOP,Hyprland
-			env = XDG_SESSION_TYPE,wayland
-			env = GDK_BACKEND,wayland
-			env = QT_QPA_PLATFORM,wayland
-			env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-			env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-			env = MOZ_ENABLE_WAYLAND,1
-			env = GTK_USE_PORTAL,1
-			
 			exec-once = eval $(${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-			exec-once = export SSH_AUTH_SOCK
-			exec-once = /run/current-system/sw/libexec/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-			exec-once = ${pkgs.kdePackages.plasma-integration}/bin/plasma-apply-colorscheme BreezeDark
-			exec-once = ${pkgs.libsForQt5.qt5.qtwayland}/bin/qtwaylandscanner
+			exec-once = wl-paste --watch cliphist store
 		'';
 
 		settings = {
@@ -31,6 +18,9 @@
 			"$menu" = "rofi -show drun";
 			"$hyprlock" = "hyprlock --immediate";
 			"$browser" = "firefox";
+			"$cliphist_history" = ''
+				cliphist list | awk '{$1=""; sub(/^ /,""); print}' | rofi -dmenu | wl-copy
+			'';
 
 			env = [ 
 				"HYPRCURSOR_THEME,catppuccin-mocha-lavender-cursors"
@@ -38,8 +28,13 @@
 				"XDG_CURRENT_DESKTOP,Hyprland"
 				"XDG_SESSION_TYPE,wayland"
 				"XDG_SESSION_DESKTOP,Hyprland"
-				"QT_QPA_PLATFORM,wayland"
 				"XDG_SCREENSHOTS_DIR,~/screens"
+				"GDK_BACKEND,wayland"
+				"GTK_USE_PORTAL,1"
+				"QT_QPA_PLATFORM,wayland"
+				"QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+				"QT_AUTO_SCREEN_SCALE_FACTOR,1"
+				"MOZ_ENABLE_WAYLAND,1"
 			];
 
 			input = {
@@ -127,8 +122,9 @@
 					# "$mod, T, exec, [workspace special:third silent] obsidian"
 			#	"$mod, M, exit,"
 					"$mod, E, exec, $fileManager"
-					"$mod, V, togglefloating,"
+					"$mod, S, togglefloating,"
 					"$mod, D, exec, $menu"
+					"$mod, V, exec, $cliphist_history"
 					"$mod, Y, pseudo,"
 					"$mod, J, togglesplit"
 					"$mod, C, exec, code --disable-gpu"

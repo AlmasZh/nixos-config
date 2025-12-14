@@ -102,6 +102,7 @@
 		libraw
 		starship
     uv
+    cliphist
 
     # DEVOPS
 		libvirt
