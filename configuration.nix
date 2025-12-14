@@ -86,32 +86,26 @@
     vim neovim tmux superfile
     git gh gitFull
     tree curl wget fish
-    lshw
-    btop htop
+    btop htop acpi lshw # list hardware(lshw)
     unzip gzip zip
     eza
 		gnome-keyring
-    cups
 		openssl
 		gawk
     procps
-		acpi
-		waydroid
-    pavucontrol
-    noisetorch
+    pavucontrol noisetorch
 
 		# PROGRAMMING
     python312 python312Packages.pip python312Packages.virtualenv pipx
-		gcc glibc gcc.libc glibc.dev libgcc gcc14
+		glibc libgcc
 		zlib
 		libjpeg
     go go-task gotools go-migrate
 		nodejs_24
 		ruby
-		fabric-ai
 
 		# MEDIA
-    ffmpeg jellyfin jellyfin-web
+    ffmpeg
 
 		# DEVOPS
     devbox
@@ -125,7 +119,6 @@
 		gparted
 		obsidian
 		thunderbird
-		genymotion
 
 		# DESKTOP
     wl-clipboard
@@ -133,9 +126,9 @@
     rofi
     hyprpaper hyprlock hyprcursor
     xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-gtk
-		kdePackages.qtwayland kdePackages.qtsvg
-    kdePackages.ffmpegthumbs kdePackages.kdegraphics-thumbnailers
-    qt6Packages.qtstyleplugin-kvantum qt6.qtwayland
+
+    # KDE & THEMING
+		kdePackages.qtwayland kdePackages.qtsvg qt6Packages.qtstyleplugin-kvantum qt6.qtwayland
     kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
     kdePackages.plasma-integration
     catppuccin-cursors catppuccin-papirus-folders papirus-folders
@@ -147,10 +140,8 @@
 	# 	JAVA_HOME = "/nix/var/nix/profiles/default/bin/java";
 	# 	#GOROOT = goroot;
 	# 	#GOPATH = "/home/almas/go";
-
-  #   #XDG_RUNTIME_DIR="/run/user/1000";
   # }; 
-  environment.variables.BRIGHTNESS_DEVICE = "amdgpu_bl1";
+  # environment.variables.BRIGHTNESS_DEVICE = "amdgpu_bl1";
 	environment.sessionVariables.PATH = [ "$HOME/go/bin" ];
   system.stateVersion = "24.05";
 }
