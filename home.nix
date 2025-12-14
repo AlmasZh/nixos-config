@@ -4,9 +4,11 @@
   imports = [
     ./h-modules/list.nix
 	];
-  home.username = "almas";
-  home.homeDirectory = "/home/almas";
-  home.stateVersion = "24.05";
+  home = {
+    username = "almas";
+    homeDirectory = "/home/almas";
+    stateVersion = "24.05";
+  };
 
 	programs.git = {
 		enable = true;
@@ -20,57 +22,10 @@
     };
 	};
 
-	systemd.user.services.kanshi.Service.Restart = "always";
-	services.kanshi = {
-		enable = true;
-		systemdTarget = "hyprland-session.target";
-
-		settings =[
-			{
-				profile.name = "undocked";
-				profile.outputs = [
-					{
-						criteria = "eDP-1";
-						status = "enable";
-					}
-				];
-			}
-			{
-				profile.name = "docked-dp2";
-				profile.outputs = [
-					{
-						criteria = "DP-2";
-						status = "enable";
-						mode = "3440x1440@180.00Hz";
-					}
-					{
-						criteria = "eDP-1";
-						status = "disable";
-					}
-				];
-			}
-			{
-				profile.name = "docked-hdmi";
-				profile.outputs = [
-					{
-						criteria = "HDMI-A-1";
-						status = "enable";
-						mode = "3440x1440@100.00Hz";
-					}
-					{
-						criteria = "eDP-1";
-						status = "disable";
-					}
-				];
-			}
-		];
-	
-	};
-
   nixpkgs.config.allowUnfree = true;
 
   home.packages = ( with pkgs; [
-    # APPS
+    # THUNAR
     xfce.thunar
     xfce.thunar-volman            # automount drives
     xfce.tumbler                  # thumbnail generation
@@ -79,98 +34,40 @@
     xfce.catfish                  # search tool
     ffmpegthumbnailer
     file-roller
-    gvfs                          # mount network drives (smb, sftp)
     sushi                         # Quick previewer for Nautilus
+
+    # APPS
 		google-chrome
     telegram-desktop discord
     libreoffice
-    vlc mpv spotify
+    vlc mpv
 		kdePackages.okular kdePackages.gwenview kdePackages.kimageformats
-    kdePackages.ffmpegthumbs kdePackages.kdegraphics-thumbnailers
 		qbittorrent
 		obsidian
-		virt-manager postman
 
     # CLI TOOLS
-    tt
-    meslo-lgs-nf
-		slurp
-		grim
-    neofetch
-		cava
-		gnumake
+    tt cliphist
+		slurp grim
+    neofetch cava starship
 		libraw
-		starship
-    uv
-    cliphist
 
     # DEVOPS
-		libvirt
 		awscli2 google-cloud-sdk
     tenv ansible gitkraken
     jetbrains-toolbox
-		qemu
 
     # DEV TOOLS
-		gogetdoc
-		air
-		sqlc
-		gcc14
+		gogetdoc air sqlc gnumake
+    uv
+		postman
 
     # DESKTOP
+    meslo-lgs-nf
     noto-fonts nerd-fonts.iosevka nerd-fonts.hack nerd-fonts.go-mono nerd-fonts.caskaydia-mono
     catppuccin-cursors catppuccin-cursors.mochaLavender catppuccin-cursors.mochaMauve
-
   ]) ++ [
     unstablePkgs.antigravity
   ];
-
-	programs.starship.enable = true;
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-		initContent = ''
-			complete -C terraform terraform
-      # export LD_LIBRARY_PATH="/nix/store/4gk773fqcsv4fh2rfkhs9bgfih86fdq8-gcc-13.3.0-lib/lib:$LD_LIBRARY_PATH"
-    '';
-    
-    plugins = [
-      #{
-      #  name = "powerlevel10k-config";
-      #  src = ./h-modules/p10k; 
-      #  file = "p10k.zsh";
-      #}
-      #{
-      #  name = "zsh-powerlevel10k";
-      #  src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-      #  file = "powerlevel10k.zsh-theme";
-      #}
-      
-    ];
-
-    shellAliases = {
-      c = "clear";
-      dus = "du -sh ./";
-      dusa = "du -sh ./*";
-			l = "eza -la --icons --group-directories-first";
-      icat = "kitty +kitten icat";
-      ".." = "cd ..";
-      "..." = "cd ../../";
-			"gitlg" = "git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all";
-    };
-
-    history = {
-      size = 10000;
-      path = "$HOME/.zsh_history";
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
-  };
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
