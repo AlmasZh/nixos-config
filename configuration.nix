@@ -76,7 +76,7 @@
   users.users.almas = {
     shell = pkgs.zsh; 
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" "wireshark" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" ];
   };
 
   nix.settings.allowed-users = [ "@wheel" "almas"];

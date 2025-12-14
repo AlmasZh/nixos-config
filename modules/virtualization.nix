@@ -10,11 +10,13 @@
 
 	virtualisation.libvirtd = {
 		enable = false;
-		qemu.runAsRoot = false;
+		qemu.runAsRoot = false; # must be false
 		allowedBridges = [
 			"nm-bridge"
 			"virbr0"
 		];
 	};
-	programs.virt-manager.enable = true;
+
+	# libvirtd groups: "libvirtd" "qemu-libvirtd" "kvm" 
+	programs.virt-manager.enable = false;
 }
