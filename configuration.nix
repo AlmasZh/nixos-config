@@ -51,8 +51,13 @@
   #];
 
   programs.hyprland.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   # services.openssh.enable = true;
 
