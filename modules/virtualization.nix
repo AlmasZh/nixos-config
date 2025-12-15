@@ -3,10 +3,9 @@
 {
 	# virtualisation.waydroid.enable = true;
 
-	virtualisation.virtualbox.host.enable = true;
-	virtualisation.virtualbox.guest.enable = true;
-	virtualisation.virtualbox.guest.dragAndDrop = true;
-	users.extraGroups.vboxusers.members = [ "almas" ];
+	virtualisation.virtualbox.host.enable = false;
+	virtualisation.virtualbox.guest.enable = false;
+	virtualisation.virtualbox.guest.dragAndDrop = false;
 
 	virtualisation.libvirtd = {
 		enable = false;
@@ -17,6 +16,5 @@
 		];
 	};
 
-	# libvirtd groups: "libvirtd" "qemu-libvirtd" "kvm" 
 	programs.virt-manager.enable = false;
 }

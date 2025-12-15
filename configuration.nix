@@ -81,7 +81,7 @@
   users.users.almas = {
     shell = pkgs.zsh; 
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "docker" "vboxusers" "libvirtd" "kvm" ];
   };
 
   nix.settings.allowed-users = [ "@wheel" "almas"];

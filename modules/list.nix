@@ -11,5 +11,8 @@
 		./wm.nix
 		./xserver.nix
 		#	./kubernetes.nix
+
+		# SPECIALISATIONS
+		./specialisation/virtualization.nix
 	];
 }
