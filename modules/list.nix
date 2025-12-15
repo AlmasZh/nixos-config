@@ -7,12 +7,12 @@
 		./nvidia.nix
 		./sddm.nix
 		./sudoers.nix
-		./virtualization.nix
+		# ./virtualization.nix
 		./wm.nix
 		./xserver.nix
 		#	./kubernetes.nix
 
 		# SPECIALISATIONS
-		./specialisation/virtualization.nix
+		./specialisations/virtualization.nix
 	];
 }

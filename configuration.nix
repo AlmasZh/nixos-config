@@ -17,6 +17,7 @@
       efiSupport = true;
       device = "nodev";
       useOSProber = false; 
+      default = "saved";
 
       extraEntries = ''
         menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'custom-windows' {
