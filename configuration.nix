@@ -19,20 +19,19 @@
       useOSProber = false; 
       default = "saved";
 
+      extraEntriesBeforeNixOS = true;
       extraEntries = ''
         menuentry 'Windows 11' --class windows --class os $menuentry_id_option 'custom-windows' {
           insmod part_gpt
           insmod fat
           search --no-floppy --fs-uuid --set=root 7823-188A
           chainloader /efi/Microsoft/Boot/bootmgfw.efi
-              }
-
-              menuentry "Shutdown" {
-                halt
         }
-
+        menuentry "Shutdown" {
+          halt
+        }
         menuentry "Reboot" {
-                reboot
+          reboot
         }
       '';
     };
