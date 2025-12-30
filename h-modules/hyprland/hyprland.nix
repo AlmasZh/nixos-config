@@ -112,6 +112,7 @@
 				[
 					"$mod, R, exec, $terminal"
 					"$mod, F, exec, $browser"
+					"$mod+SHIFT, F, exec, sh -c '$browser && obsidian && Telegram'"
 					"$mod+SHIFT, G, exec, $hyprlock"
 					"$mod, G, global, caelestia:lock"
 					"$mod, Q, killactive,"
